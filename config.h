@@ -4,8 +4,11 @@
 static const char *upvol[]   = { "/usr/bin/pactl", "set-sink-volume", "0", "+5%",     NULL };
 static const char *downvol[] = { "/usr/bin/pactl", "set-sink-volume", "0", "-5%",     NULL };
 static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute",   "0", "toggle",  NULL };
+// brightness
+//static const char *briup[]        = { "/usr/bin/brightnessctl", "s", "1%+",	NULL };
+//static const char *bridown[]      = { "/usr/bin/brightnessctl", "s", "1%-",	NULL };
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
-static const unsigned int gappx     = 4;        /* gap pixel between windows */
+static const unsigned int gappx     = 6;        /* gap pixel between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
@@ -13,6 +16,7 @@ static const char *fonts[]          = { "monospace:size=10" };
 static const char dmenufont[]       = "monospace:size=10";
 static const char col_red1[]        = "#FF0000";
 static const char col_pinky[]       = "#a80875";
+static const char col_purpl[]       = "#9e0093";
 static const char col_red2[]        = "#B10000";
 static const char col_yel1[]        = "#B6A60E";
 static const char col_blac1[]       = "#000000";
@@ -25,7 +29,7 @@ static const char col_cyan[]        = "#005577";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
         [SchemeNorm] = { col_gray3, col_blac1, col_blac1 },
-	[SchemeSel]  = { col_gray4, col_pinky,  col_pinky  },
+	[SchemeSel]  = { col_gray4, col_purpl,  col_purpl  },
         };
 
 /* tagging */
@@ -66,7 +70,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_blac1, "-nf", col_gray3, "-sb", col_pinky, "-sf", col_gray4, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_blac1, "-nf", col_gray3, "-sb", col_purpl, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 
 static Key keys[] = {
@@ -74,6 +78,8 @@ static Key keys[] = {
         { 0,                       XF86XK_AudioLowerVolume, spawn, {.v = downvol } },
 	{ 0,                       XF86XK_AudioMute, spawn, {.v = mutevol } },
 	{ 0,                       XF86XK_AudioRaiseVolume, spawn, {.v = upvol   } },       
+
+
         { MODKEY,                       XK_n,      togglealttag,   {0} },  
         { MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },

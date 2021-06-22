@@ -4,9 +4,6 @@
 static const char *upvol[]   = { "/usr/bin/pactl", "set-sink-volume", "0", "+5%",     NULL };
 static const char *downvol[] = { "/usr/bin/pactl", "set-sink-volume", "0", "-5%",     NULL };
 static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute",   "0", "toggle",  NULL };
-// brightness
-//static const char *briup[]        = { "/usr/bin/brightnessctl", "s", "1%+",	NULL };
-//static const char *bridown[]      = { "/usr/bin/brightnessctl", "s", "1%-",	NULL };
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int gappx     = 6;        /* gap pixel between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
@@ -33,7 +30,7 @@ static const char *colors[][3]      = {
         };
 
 /* tagging */
-static const char *tags[] = { "", "", "", "", "", "", "", "", ""  };
+static const char *tags[] = { " ", " ", " ", " ", " ", " ", " ", " ", " "  };
 static const char *tagsalt[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 static const Rule rules[] = {
 	/* xprop(1):
@@ -41,7 +38,8 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
+	{ "Gnome-calculator",      NULL,       NULL,         1,            1,           -1 },
+	{ "obs",                   NULL,      NULL,          1,            1,           -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
 };
 
